@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.1.0)
-project(Ccon 
+project(ccon 
     VERSION 1.0.0
     LANGUAGES CXX
 )

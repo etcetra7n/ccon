@@ -1,7 +1,7 @@
+#include <windows.h>
 #include <cstdio>
 #include <string>
 #include <fstream>
-#include <windows.h>
 
 void ErrorExit(const std::string &errMsg){
     LPVOID lpMsgBuf;

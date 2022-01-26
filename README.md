@@ -1,4 +1,4 @@
-# Ccon
+# ccon
 
 Ccon (Copy CONtent) (pronounce 'see-kon') is a software that can copy a
 file into your clipboard

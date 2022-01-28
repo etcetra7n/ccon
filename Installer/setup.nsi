@@ -79,21 +79,22 @@
     EnVar::SetHKCU
     EnVar::AddValue "PATH" "$INSTDIR"
     
-    ; Register applications
+    ; Register application
     WriteRegStr HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\ccon.exe" "" "$INSTDIR\ccon.exe"
-    WriteRegStr HKEY_CLASSES_ROOT Applications\ccon.exe\DefaultIcon "" "$\"$INSTDIR\cpy_icon.ico$\""
+    WriteRegStr HKEY_CLASSES_ROOT Applications\ccon.exe\DefaultIcon "" "$INSTDIR\cpy_icon.ico"
     WriteRegStr HKEY_CLASSES_ROOT Applications\ccon.exe\shell\open\command "" "$\"$INSTDIR\ccon.exe$\" $\"%1$\""
     WriteRegStr HKEY_CLASSES_ROOT Applications\ccon.exe\SupportedTypes ".cpy" ""
     
     ; Configure .cpy file
-    WriteRegStr HKEY_CLASSES_ROOT .cpy "" "CCON.ClipboardStateFile"
-    WriteRegStr HKEY_CLASSES_ROOT .cpy "Content Type" "application/ccon"
+    WriteRegStr HKEY_CLASSES_ROOT .cpy "" "CCON.ClipboardStateFile.1"
+    WriteRegStr HKEY_CLASSES_ROOT .cpy "Content Type" "text/plain"
     WriteRegStr HKEY_CLASSES_ROOT .cpy "PerceivedType" "text"
-    WriteRegStr HKEY_CLASSES_ROOT CCON.ClipboardStateFile "" "Clipboard State File"
-    WriteRegStr HKEY_CLASSES_ROOT CCON.ClipboardStateFile\DefaultIcon "" "$INSTDIR\cpy_icon.ico"
-    WriteRegStr HKEY_CLASSES_ROOT CCON.ClipboardStateFile\shell\open\command "" "$\"$INSTDIR\ccon.exe$\" $\"%1$\""
-    WriteRegStr HKEY_CLASSES_ROOT CCON.ClipboardStateFile\shell\edit\command "" "$\"%SystemRoot%\system32\notepad.exe $\"%1$\""
-  
+    WriteRegStr HKEY_CLASSES_ROOT CCON.ClipboardStateFile.1 "" "Clipboard State File"
+    WriteRegStr HKEY_CLASSES_ROOT CCON.ClipboardStateFile.1\DefaultIcon "" "$INSTDIR\cpy_icon.ico"
+    WriteRegStr HKEY_CLASSES_ROOT CCON.ClipboardStateFile.1\shell\open\command "" "$\"$INSTDIR\ccon.exe$\" $\"%1$\""
+    WriteRegStr HKEY_CLASSES_ROOT CCON.ClipboardStateFile.1\shell\edit\command "" "$\"%SystemRoot%\system32\NOTEPAD.EXE $\"%1$\""
+    WriteRegStr HKEY_CURRENT_USER Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.cpy\UserChoice "Progid" "CCON.ClipboardStateFile.1"
+    
     ; Configure right click context menu
     WriteRegStr HKEY_CLASSES_ROOT *\Shell\ccon "" "Copy content"
     WriteRegStr HKEY_CLASSES_ROOT *\Shell\ccon "Extended" ""
@@ -119,14 +120,16 @@
     EnVar::SetHKCU
     EnVar::DeleteValue "PATH" "$INSTDIR"
     
-    ; Deconfigure right click context menu
-    DeleteRegKey HKEY_CLASSES_ROOT *\Shell\ccon
+    ; Unregister application
+    DeleteRegKey HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\ccon.exe"
+    DeleteRegKey HKEY_CLASSES_ROOT Applications\ccon.exe
     
     ; Deconfigure .cpy file
-    DeleteRegKey HKEY_CLASSES_ROOT .cpy
-    DeleteRegKey HKEY_CLASSES_ROOT CCON.ClipboardStateFile
-    DeleteRegKey HKEY_CLASSES_ROOT Applications\ccon.exe
-    DeleteRegKey HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\ccon.exe"
+    DeleteRegKey HKEY_CLASSES_ROOT CCON.ClipboardStateFile.1
+    DeleteRegKey HKEY_CURRENT_USER Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.cpy
+    
+    ; Deconfigure right click context menu
+    DeleteRegKey HKEY_CLASSES_ROOT *\Shell\ccon
     
   SectionEnd
 

@@ -85,5 +85,6 @@ $RECYCLE.BIN/
 *.lnk
 
 ### Custom ###
+_build
 _vcbuild/
 _workspace/

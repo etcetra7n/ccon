@@ -86,13 +86,13 @@
     WriteRegStr HKEY_CLASSES_ROOT Applications\ccon.exe\SupportedTypes ".cpy" ""
     
     ; Configure .cpy file
-    WriteRegStr HKEY_CLASSES_ROOT .cpy "" "ccon.ClipboardStateFile"
+    WriteRegStr HKEY_CLASSES_ROOT .cpy "" "CCON.ClipboardStateFile"
     WriteRegStr HKEY_CLASSES_ROOT .cpy "Content Type" "application/ccon"
     WriteRegStr HKEY_CLASSES_ROOT .cpy "PerceivedType" "text"
-    WriteRegStr HKEY_CLASSES_ROOT ccon.ClipboardStateFile "" "Clipboard State File"
-    WriteRegStr HKEY_CLASSES_ROOT ccon.ClipboardStateFile\DefaultIcon "" "$INSTDIR\cpy_icon.ico"
-    WriteRegStr HKEY_CLASSES_ROOT ccon.ClipboardStateFile\shell\open\command "" "$\"$INSTDIR\ccon.exe$\" $\"%1$\""
-    WriteRegStr HKEY_CLASSES_ROOT ccon.ClipboardStateFile\shell\edit\command "" "$\"%SystemRoot%\system32\notepad.exe $\"%1$\""
+    WriteRegStr HKEY_CLASSES_ROOT CCON.ClipboardStateFile "" "Clipboard State File"
+    WriteRegStr HKEY_CLASSES_ROOT CCON.ClipboardStateFile\DefaultIcon "" "$INSTDIR\cpy_icon.ico"
+    WriteRegStr HKEY_CLASSES_ROOT CCON.ClipboardStateFile\shell\open\command "" "$\"$INSTDIR\ccon.exe$\" $\"%1$\""
+    WriteRegStr HKEY_CLASSES_ROOT CCON.ClipboardStateFile\shell\edit\command "" "$\"%SystemRoot%\system32\notepad.exe $\"%1$\""
   
     ; Configure right click context menu
     WriteRegStr HKEY_CLASSES_ROOT *\Shell\ccon "" "Copy content"
@@ -124,7 +124,7 @@
     
     ; Deconfigure .cpy file
     DeleteRegKey HKEY_CLASSES_ROOT .cpy
-    DeleteRegKey HKEY_CLASSES_ROOT ccon.ClipboardStateFile
+    DeleteRegKey HKEY_CLASSES_ROOT CCON.ClipboardStateFile
     DeleteRegKey HKEY_CLASSES_ROOT Applications\ccon.exe
     DeleteRegKey HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\ccon.exe"
     

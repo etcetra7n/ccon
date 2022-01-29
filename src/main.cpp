@@ -13,12 +13,15 @@ int main(int argc, char **argv){
     if (!EmptyClipboard()){
         ErrorExit("Can't empty the clipboard");
     }
-
-    std::ifstream file(argv[1]);
-    if (!file.good()){
+    std::ifstream file(argv[1], std::ios::in);
+    std::stringstream buffer;
+    if(!file.good())
+    {
         ErrorExit("Can't open file");
     }
-    std::string content((std::istreambuf_iterator<char>(file)), (std::istreambuf_iterator<char>()));
+    buffer << file.rdbuf();
+    std::string content = buffer.str();
+    file.close();
     const size_t sz = content.length()+1;
 
     HGLOBAL h = GlobalAlloc(GMEM_MOVEABLE, sz);

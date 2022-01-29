@@ -12,7 +12,7 @@
     !define ARCH "x86"
   !endif
   !ifndef CCON_EXE_PATH
-    !define CCON_EXE_PATH "..\_build\ccon.exe"
+    !define CCON_EXE_PATH "..\_vcbuild\Release\ccon.exe"
   !endif
   !ifndef CPY_ICON_ICO_PATH
     !define CPY_ICON_ICO_PATH "cpy_icon.ico"

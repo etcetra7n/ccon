@@ -24,7 +24,7 @@
 ;======================================================
 ; Installer Information
 
-  Name "ccon"
+  Name "CCON"
   OutFile "ccon-v${VERSION}-${ARCH}-setup.exe"
   !if ${ARCH} == "x86"
     InstallDir $PROGRAMFILES\ccon

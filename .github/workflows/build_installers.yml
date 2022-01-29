@@ -18,6 +18,10 @@ jobs:
         uses: actions/checkout@v2
       - name: Install dependencies
         run: choco install upx
+      - name: List workflows
+        run: |
+          ls .
+          ls ./.github/workflows
       - name: Build binaries
         uses: ./.github/workflows/build_win64.yml
       - name: Compress Binaries

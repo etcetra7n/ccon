@@ -20,7 +20,7 @@ void ErrorExit(const std::string &errMsg){
 
     lpDisplayBuf = (LPVOID)LocalAlloc(LMEM_ZEROINIT, errMsg.size() * sizeof(TCHAR));
     sprintf((LPTSTR)lpDisplayBuf, TEXT(errMsg).c_str());
-    MessageBox(NULL, (LPCTSTR)lpDisplayBuf, TEXT("ccon.exe"), MB_OK);
+    MessageBox(NULL, (LPCTSTR)lpDisplayBuf, TEXT("CCON"), MB_OK);
 
     LocalFree(lpMsgBuf);
     LocalFree(lpDisplayBuf);

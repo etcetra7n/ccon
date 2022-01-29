@@ -102,6 +102,9 @@
     
     ; Write uninstaller
     WriteUninstaller $INSTDIR\uninst-ccon.exe
+    
+    ; Send a WM_SETTINGCHANGE signal
+    SendMessage ${HWND_BROADCAST} ${WM_SETTINGCHANGE} 0x002A 0 /TIMEOUT=5000
 
   SectionEnd
 
@@ -130,6 +133,9 @@
     
     ; Deconfigure right click context menu
     DeleteRegKey HKEY_CLASSES_ROOT *\Shell\ccon
+    
+    ; Send a WM_SETTINGCHANGE signal
+    SendMessage ${HWND_BROADCAST} ${WM_SETTINGCHANGE} 0x002A 0 /TIMEOUT=5000
     
   SectionEnd
 

@@ -1,5 +1,6 @@
 #include "ErrorExit.h"
 #include <windows.h>
+#include <cstdlib>
 #include <cstdio>
 #include <string>
 

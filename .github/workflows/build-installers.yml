@@ -13,11 +13,8 @@ jobs:
   win64_build:
     name: Build x64 Installer
     runs-on: windows-latest
+    uses: etcetra7n/ccon/.github/workflows/build-win64.yml
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Build binaries
-        uses: etcetra7n/ccon/.github/workflows/build-win64.yml@main
       - name: Install dependencies
         run: choco install upx
       - name: Compress Binaries

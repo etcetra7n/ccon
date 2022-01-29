@@ -14,7 +14,7 @@ jobs:
         run: choco install ninja upx
       - name: Build
         run: |
-          cmake -S. -B _build -DCMAKE_CXX_COMPILER=g++ -DCMAKE_BUILD_TYPE=Release -G Ninja
+          cmake -S. -B _build -DCMAKE_BUILD_TYPE=Release -G Ninja
           cmake --build _build
       - name: Compress
         run: |

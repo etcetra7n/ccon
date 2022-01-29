@@ -19,7 +19,7 @@ jobs:
       - name: Install dependencies
         run: choco install upx
       - name: Build binaries
-        uses: ./.github/workflows/build-win64.yml
+        uses: etcetra7n/ccon/.github/workflows/build-win64.yml@main
       - name: Compress Binaries
         run: |
           echo "Size:"

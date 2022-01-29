@@ -1,7 +1,7 @@
 ;======================================================
 ; Include
 
-  !include MUI.nsh
+  !include MUI2.nsh
 
 ;======================================================
 ; Macro definitions
@@ -25,7 +25,7 @@
 ; Installer Information
 
   Name "CCON"
-  OutFile "ccon-v${VERSION}-${ARCH}-setup.exe"
+  OutFile "ccon-v${VERSION}-win-${ARCH}-setup.exe"
   !if ${ARCH} == "x86"
     InstallDir $PROGRAMFILES\ccon
   !else if ${ARCH} == "x64"

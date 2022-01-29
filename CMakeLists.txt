@@ -16,7 +16,7 @@ include_directories(
 )
 
 set(SOURCES
-    ${PROJECT_SOURCE_DIR}/src/ccon.cpp
+    ${PROJECT_SOURCE_DIR}/src/main.cpp
 )
 
 add_executable(ccon ${SOURCES})

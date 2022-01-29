@@ -1,6 +1,8 @@
 #include <windows.h>
 #include <cstring>
 #include <string>
+#include <fstream>
+#include <sstream>
 #include "ErrorExit.h"
 
 int main(int argc, char **argv){

@@ -1,6 +1,6 @@
 #include <windows.h>
 #include <string>
-#include "ccon.h"
+#include "ErrorExit.h"
 
 int main(int argc, char **argv){
     if (argc < 2){

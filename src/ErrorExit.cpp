@@ -1,4 +1,4 @@
-#include "ccon.h"
+#include "ErrorExit.h"
 #include <windows.h>
 #include <cstdio>
 #include <string>

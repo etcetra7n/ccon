@@ -28,7 +28,7 @@ void ErrorExit(const std::string &errMsg){
     exit(dw);
 }
 
-int main(int argc, char* argv[]){
+int main(int argc, char **argv){
     if (argc < 2){
         ErrorExit("Missing argument for a filename");
     }

@@ -16,10 +16,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Install dependencies
-        run: choco install upx
       - name: Build binaries
         uses: etcetra7n/ccon/.github/workflows/build-win64.yml@main
+      - name: Install dependencies
+        run: choco install upx
       - name: Compress Binaries
         run: |
           echo "Size:"

@@ -12,6 +12,7 @@ else()
 endif()
 
 include_directories(
+    include
     src
 )
 
@@ -20,8 +21,8 @@ set(HEADERS
 )
 
 set(SOURCES
-    ${PROJECT_SOURCE_DIR}/src/main.cpp
-    ${PROJECT_SOURCE_DIR}/src/ErrorExit.cpp
+    src/main.cpp
+    src/ErrorExit.cpp
 )
 
 add_executable(ccon ${HEADERS} ${SOURCES})

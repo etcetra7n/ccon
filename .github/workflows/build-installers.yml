@@ -31,7 +31,7 @@ jobs:
           echo ((Get-Item _build/Release/ccon.exe).length)
       - name: Build Installer
         run: |
-          makensis /D VERSION="${{ github.event.inputs.version }}" /D ARCH="x64" Installer/setup.nsi
+          makensis /D VERSION="${{ github.event.inputs.version }}" /D ARCH="x64" Installer\setup.nsi
       - name: Compress Installer
         run: |
           echo "Size:"
@@ -66,7 +66,7 @@ jobs:
           echo ((Get-Item _build/Release/ccon.exe).length)
       - name: Build Installer
         run: |
-          makensis /D VERSION="$ {{ github.event.inputs.version }}" /D ARCH="x86" Installer/setup.nsi
+          makensis /D VERSION="$ {{ github.event.inputs.version }}" /D ARCH="x86" Installer\setup.nsi
       - name: Compress Installer
         run: |
           echo "Size:"

@@ -15,11 +15,16 @@ include_directories(
     src
 )
 
-set(SOURCES
-    ${PROJECT_SOURCE_DIR}/src/main.cpp
+set(HEADERS
+    ${PROJECT_SOURCE_DIR}/src/ccon.h
 )
 
-add_executable(ccon ${SOURCES})
+set(SOURCES
+    ${PROJECT_SOURCE_DIR}/src/main.cpp
+    ${PROJECT_SOURCE_DIR}/src/ErrorExit.cpp
+)
+
+add_executable(ccon ${SOURCES} ${HEADERS})
 
 install(
     TARGETS ccon

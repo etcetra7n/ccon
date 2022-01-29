@@ -12,10 +12,10 @@
     !define ARCH "x86"
   !endif
   !ifndef CCON_EXE_PATH
-    !define CCON_EXE_PATH "..\_vcbuild\Release\ccon.exe"
+    !define CCON_EXE_PATH "..\_build\Release\ccon.exe"
   !endif
   !ifndef CPY_ICON_ICO_PATH
-    !define CPY_ICON_ICO_PATH "cpy_icon.ico"
+    !define CPY_ICO_PATH "cpy.ico"
   !endif
   !ifndef LICENSE_PATH
     !define LICENSE_PATH "..\LICENSE"
@@ -73,7 +73,7 @@
     ; Write ccon.exe to $INSTDIR
     SetOutPath $INSTDIR
     File ${CCON_EXE_PATH}
-    File ${CPY_ICON_ICO_PATH}
+    File ${CPY_ICO_PATH}
 
     ; Add $INSTDIR to the PATH user environment variable
     EnVar::SetHKCU
@@ -81,7 +81,7 @@
     
     ; Register application
     WriteRegStr HKEY_LOCAL_MACHINE "SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\ccon.exe" "" "$INSTDIR\ccon.exe"
-    WriteRegStr HKEY_CLASSES_ROOT Applications\ccon.exe\DefaultIcon "" "$INSTDIR\cpy_icon.ico"
+    WriteRegStr HKEY_CLASSES_ROOT Applications\ccon.exe\DefaultIcon "" "$INSTDIR\cpy.ico"
     WriteRegStr HKEY_CLASSES_ROOT Applications\ccon.exe\shell\open\command "" "$\"$INSTDIR\ccon.exe$\" $\"%1$\""
     WriteRegStr HKEY_CLASSES_ROOT Applications\ccon.exe\SupportedTypes ".cpy" ""
     
@@ -90,7 +90,7 @@
     WriteRegStr HKEY_CLASSES_ROOT .cpy "Content Type" "text/plain"
     WriteRegStr HKEY_CLASSES_ROOT .cpy "PerceivedType" "text"
     WriteRegStr HKEY_CLASSES_ROOT CCON.ClipboardStateFile.1 "" "Clipboard State File"
-    WriteRegStr HKEY_CLASSES_ROOT CCON.ClipboardStateFile.1\DefaultIcon "" "$INSTDIR\cpy_icon.ico"
+    WriteRegStr HKEY_CLASSES_ROOT CCON.ClipboardStateFile.1\DefaultIcon "" "$INSTDIR\cpy.ico"
     WriteRegStr HKEY_CLASSES_ROOT CCON.ClipboardStateFile.1\shell\open\command "" "$\"$INSTDIR\ccon.exe$\" $\"%1$\""
     WriteRegStr HKEY_CLASSES_ROOT CCON.ClipboardStateFile.1\shell\edit\command "" "$\"%SystemRoot%\system32\NOTEPAD.EXE $\"%1$\""
     WriteRegStr HKEY_CURRENT_USER Software\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.cpy\UserChoice "Progid" "CCON.ClipboardStateFile.1"
@@ -116,7 +116,7 @@
     ; Remove executables
     Delete $INSTDIR\ccon.exe
     Delete $INSTDIR\uninst-ccon.exe
-    Delete $INSTDIR\cpy_icon.ico
+    Delete $INSTDIR\cpy.ico
     RMDir $INSTDIR
     
     ; Remove $INSTDIR from PATH user environment variable

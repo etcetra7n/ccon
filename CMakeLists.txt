@@ -16,7 +16,7 @@ include_directories(
 )
 
 set(HEADERS
-    ${PROJECT_SOURCE_DIR}/src/ccon.h
+    ${PROJECT_SOURCE_DIR}/src/ErrorExit.h
 )
 
 set(SOURCES

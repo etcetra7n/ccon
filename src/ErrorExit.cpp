@@ -1,5 +1,6 @@
 #include "ccon.h"
 #include <windows.h>
+#include <cstdio>
 #include <string>
 
 void ErrorExit(const std::string &errMsg){

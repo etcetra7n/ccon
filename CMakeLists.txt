@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.1.0)
-project(ccon
+project(Ccon
     VERSION 1.0.0
     LANGUAGES CXX
 )
@@ -24,7 +24,7 @@ set(SOURCES
     ${PROJECT_SOURCE_DIR}/src/ErrorExit.cpp
 )
 
-add_executable(ccon ${SOURCES} ${HEADERS})
+add_executable(ccon ${HEADERS} ${SOURCES})
 
 install(
     TARGETS ccon

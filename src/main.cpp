@@ -1,6 +1,4 @@
-//#include <windows.h>
-#include <winuser.h>
-#include <winbase.h>
+#include <windows.h>
 #include <cstring>
 #include <string>
 #include "ErrorExit.h"

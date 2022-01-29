@@ -6,7 +6,7 @@ project(ccon
 
 set(CMAKE_CXX_STANDARD 14)
 if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /std:c++14 /W4 /link /subsystem:windows /entry:mainCRTStartup")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 else()
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall -Wextra -Wpedantic -mwindows")
 endif()
@@ -30,3 +30,5 @@ install(
     TARGETS ccon
     RUNTIME DESTINATION bin
 )
+
+#/std:c++14 /W4 /link /subsystem:windows /entry:mainCRTStartup

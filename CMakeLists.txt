@@ -12,7 +12,6 @@ else()
 endif()
 
 include_directories(
-    include
     src
 )
 

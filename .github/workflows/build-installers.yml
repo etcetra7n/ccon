@@ -20,6 +20,7 @@ jobs:
         run: choco install upx
       - name: Build
         run: |
+          makensis /HDRINFO
           cmake . -S. -B _build -A x64 -G "Visual Studio 16 2019"
           cmake --build _build --config Release
       - name: Compress Binaries
@@ -31,7 +32,7 @@ jobs:
           echo ((Get-Item _build/Release/ccon.exe).length)
       - name: Build Installer
         run: |
-          makensis -D VERSION="${{ github.event.inputs.version }}" -D Arch="x64" Installer/setup.nsi
+          makensis /D VERSION="${{ github.event.inputs.version }}" /D Arch="x64" Installer/setup.nsi
       - name: Compress Installer
         run: |
           echo "Size:"
@@ -66,7 +67,7 @@ jobs:
           echo ((Get-Item _build/Release/ccon.exe).length)
       - name: Build Installer
         run: |
-          makensis -D VERSION="$ {{ github.event.inputs.version }}" -D Arch="x86" Installer/setup.nsi
+          makensis /D VERSION="$ {{ github.event.inputs.version }}" /D Arch="x86" Installer/setup.nsi
       - name: Compress Installer
         run: |
           echo "Size:"

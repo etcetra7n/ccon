@@ -1,3 +1,3 @@
 #include <string>
 
-void ErrorExit(const std::string &errMsg)
+void ErrorExit(const std::string &errMsg);

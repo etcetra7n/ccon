@@ -1,0 +1,31 @@
+name: Windows x64 Build
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  win64_build:
+    name: Build
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: choco install upx
+      - name: Build
+        run: |
+          cmake -S. -B _build -G "Visual Studio 16 2019"
+          cmake --build _build --config Release
+      - name: Compress
+        run: |
+          echo "Size:"
+          echo ((Get-Item _build/Release/ccon.exe).length)
+          upx -9 _build/Release/ccon.exe
+          echo "Size after upx:"
+          echo ((Get-Item _build/Release/ccon.exe).length)
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ccon-win-x64.exe
+          path: _build/Release/ccon.exe

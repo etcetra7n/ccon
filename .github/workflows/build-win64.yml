@@ -15,7 +15,7 @@ jobs:
         run: choco install upx
       - name: Build
         run: |
-          cmake . -S. -B _build -G "Visual Studio 16 2019"
+          cmake . -S. -B _build -A x64 -G "Visual Studio 16 2019"
           cmake --build _build --config Release
       - name: Compress
         run: |

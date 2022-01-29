@@ -12,7 +12,7 @@ else()
 endif()
 
 set(SOURCES
-    ccon.cpp
+    src/ccon.cpp
 )
 
 add_executable(ccon ${SOURCES})

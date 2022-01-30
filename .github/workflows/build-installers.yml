@@ -52,7 +52,7 @@ jobs:
       - name: Upload binaries
         uses: actions/upload-artifact@v2
         with:
-          name: ccon.exe
+          name: ccon-x64.exe
           path: _build/Release/ccon.exe
       - name: Upload installer
         uses: actions/upload-artifact@v2
@@ -91,7 +91,7 @@ jobs:
           echo ((Get-Item _build/Release/ccon.exe).length)
       - name: Build installer
         run: |
-          makensis /DVERSION="$ {{ github.event.inputs.version }}" /DARCH="x86" Installer/setup.nsi
+          makensis /DVERSION="${{ github.event.inputs.version }}" /DARCH="x86" Installer/setup.nsi
       - name: Compress installer
         run: |
           echo "Size:"
@@ -102,7 +102,7 @@ jobs:
       - name: Upload binary
         uses: actions/upload-artifact@v2
         with:
-          name: ccon.exe
+          name: ccon-x86.exe
           path: _build/Release/ccon.exe
       - name: Upload installer
         uses: actions/upload-artifact@v2

@@ -23,7 +23,6 @@ jobs:
           echo "Downloading 'EnVar_plugin.zip'..."
           Invoke-WebRequest -Uri https://nsis.sourceforge.io/mediawiki/images/7/7f/EnVar_plugin.zip -OutFile EnVar_plugin.zip
           7z x EnVar_plugin.zip -oEnVar_plugin
-          ls EnVar_plugin/Plugin
           ls EnVar_plugin/Plugins
           ls "C:/Program Files (x86)/NSIS/Plugins/x86-ansi"
           ls "C:/Program Files (x86)/NSIS/Plugins/x86-unicode"

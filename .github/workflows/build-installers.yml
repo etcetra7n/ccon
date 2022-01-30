@@ -11,7 +11,7 @@ on:
 
 jobs:
   win64_build:
-    name: Build x64 Installer
+    name: Build x64 installer
     runs-on: windows-latest
     steps:
       - name: Checkout
@@ -61,7 +61,7 @@ jobs:
           path: Installer/ccon-v${{ github.event.inputs.version }}-win-x64-setup.exe
 
   win32_build:
-    name: Build x86 Installer
+    name: Build x86 installer
     runs-on: windows-latest
     steps:
       - name: Checkout

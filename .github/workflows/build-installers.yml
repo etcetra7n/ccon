@@ -28,28 +28,33 @@ jobs:
           Copy-Item -Path EnVar_plugin/Plugins/x86-ansi/EnVar.dll -Destination "C:/Program Files (x86)/NSIS/Plugins/x86-ansi" -PassThru
           Copy-Item -Path EnVar_plugin/Plugins/x86-unicode/EnVar.dll -Destination "C:/Program Files (x86)/NSIS/Plugins/x86-unicode" -PassThru
           echo "EnVar plugin installation complete."
-      - name: Build
+      - name: Build binaries
         run: |
           cmake . -S. -B _build -A x64 -G "Visual Studio 16 2019"
           cmake --build _build --config Release
-      - name: Compress Binaries
+      - name: Compress binaries
         run: |
           echo "Size:"
           echo ((Get-Item _build/Release/ccon.exe).length)
           upx -9 _build/Release/ccon.exe
           echo "Size after upx:"
           echo ((Get-Item _build/Release/ccon.exe).length)
-      - name: Build Installer
+      - name: Build installer
         run: |
           makensis /DVERSION="${{ github.event.inputs.version }}" /DARCH="x64" Installer/setup.nsi
-      - name: Compress Installer
+      - name: Compress installer
         run: |
           echo "Size:"
           echo ((Get-Item Installer/ccon-v${{ github.event.inputs.version }}-win-x64-setup.exe).length)
           upx -9 Installer/ccon-v${{ github.event.inputs.version }}-win-x64-setup.exe
           echo "Size after upx:"
           echo ((Get-Item Installer/ccon-v${{ github.event.inputs.version }}-win-x64-setup.exe).length)
-      - name: Upload artifacts
+      - name: Upload binaries
+        uses: actions/upload-artifact@v2
+        with:
+          name: ccon.exe
+          path: _build/Release/ccon.exe
+      - name: Upload installer
         uses: actions/upload-artifact@v2
         with:
           name: ccon-v${{ github.event.inputs.version }}-win-x64-setup.exe
@@ -73,28 +78,33 @@ jobs:
           Copy-Item -Path EnVar_plugin/Plugins/x86-ansi/EnVar.dll -Destination "C:/Program Files (x86)/NSIS/Plugins/x86-ansi" -PassThru
           Copy-Item -Path EnVar_plugin/Plugins/x86-unicode/EnVar.dll -Destination "C:/Program Files (x86)/NSIS/Plugins/x86-unicode" -PassThru
           echo "EnVar plugin installation complete."
-      - name: Build
+      - name: Build binaries
         run: |
           cmake . -S. -B _build -A Win32 -G "Visual Studio 16 2019"
           cmake --build _build --config Release
-      - name: Compress Binaries
+      - name: Compress binaries
         run: |
           echo "Size:"
           echo ((Get-Item _build/Release/ccon.exe).length)
           upx -9 _build/Release/ccon.exe
           echo "Size after upx:"
           echo ((Get-Item _build/Release/ccon.exe).length)
-      - name: Build Installer
+      - name: Build installer
         run: |
           makensis /DVERSION="$ {{ github.event.inputs.version }}" /DARCH="x86" Installer/setup.nsi
-      - name: Compress Installer
+      - name: Compress installer
         run: |
           echo "Size:"
           echo ((Get-Item Installer/ccon-v${{ github.event.inputs.version }}-win-x86-setup.exe).length)
           upx -9 Installer/ccon-v${{ github.event.inputs.version }}-win-x86-setup.exe
           echo "Size after upx:"
           echo ((Get-Item Installer/ccon-v${{ github.event.inputs.version }}-win-x86-setup.exe).length)
-      - name: Upload artifacts
+      - name: Upload binary
+        uses: actions/upload-artifact@v2
+        with:
+          name: ccon.exe
+          path: _build/Release/ccon.exe
+      - name: Upload installer
         uses: actions/upload-artifact@v2
         with:
           name: ccon-v${{ github.event.inputs.version }}-win-x86-setup.exe

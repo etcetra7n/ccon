@@ -2,7 +2,6 @@ name: Windows x86 build
 
 on:
   workflow_dispatch:
-  workflow_call:
 
 jobs:
   win32_build:
@@ -27,5 +26,5 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: ccon-win-x86.exe
+          name: ccon-x86.exe
           path: _build/Release/ccon.exe

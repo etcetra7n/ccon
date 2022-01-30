@@ -20,13 +20,13 @@ jobs:
         run: |
           choco install upx
           echo "Installing EnVar plugin for NSIS..."
-          echo "Downloading 'EnVar_plugin.zip'..."
+          echo "Downloading 'EnVar_plugin.zip' from 'https://nsis.sourceforge.io/mediawiki/images/7/7f/EnVar_plugin.zip'..."
           Invoke-WebRequest -Uri https://nsis.sourceforge.io/mediawiki/images/7/7f/EnVar_plugin.zip -OutFile EnVar_plugin.zip
+          echo "Extracting 'EnVar_plugin.zip' to 'EnVar_plugin'"
           7z x EnVar_plugin.zip -oEnVar_plugin
-          ls EnVar_plugin/Plugins/x86-ansi
-          ls EnVar_plugin/Plugins/x86-unicode
-          ls "C:/Program Files (x86)/NSIS/Plugins/x86-ansi"
-          ls "C:/Program Files (x86)/NSIS/Plugins/x86-unicode"
+          echo "Copying plugin files to 'C:/Program Files (x86)/NSIS/Plugins'"
+          Copy-Item -Path EnVar_plugin/Plugins/x86-ansi/EnVar.dll -Destination "C:/Program Files (x86)/NSIS/Plugins/x86-ansi" -PassThru
+          Copy-Item -Path EnVar_plugin/Plugins/x86-unicode/EnVar.dll -Destination "C:/Program Files (x86)/NSIS/Plugins/x86-unicode" -PassThru
       - name: Build
         run: |
           cmake . -S. -B _build -A x64 -G "Visual Studio 16 2019"

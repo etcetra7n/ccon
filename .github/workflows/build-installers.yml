@@ -99,7 +99,7 @@ jobs:
           upx -9 Installer/ccon-v${{ github.event.inputs.version }}-win-x86-setup.exe
           echo "Size after upx:"
           echo ((Get-Item Installer/ccon-v${{ github.event.inputs.version }}-win-x86-setup.exe).length)
-      - name: Upload binary
+      - name: Upload binaries
         uses: actions/upload-artifact@v2
         with:
           name: ccon-${{ github.event.inputs.version }}-win-x86.exe

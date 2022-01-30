@@ -22,7 +22,7 @@ jobs:
           echo "Installing EnVar plugin for NSIS..."
           echo "Downloading 'EnVar_plugin.zip'..."
           Invoke-WebRequest -Uri https://nsis.sourceforge.io/mediawiki/images/7/7f/EnVar_plugin.zip -OutFile EnVar_plugin.zip
-          ls C:\ProgramData\chocolatey\lib\upx\tools\upx-3.96-win64
+          ls C:\ProgramData\chocolatey\lib\nsis
       - name: Build
         run: |
           cmake . -S. -B _build -A x64 -G "Visual Studio 16 2019"

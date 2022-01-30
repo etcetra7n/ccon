@@ -39,6 +39,11 @@ jobs:
           upx -9 _build/Release/ccon.exe
           echo "Size after upx:"
           echo ((Get-Item _build/Release/ccon.exe).length)
+      - name: Upload binaries
+        uses: actions/upload-artifact@v2
+        with:
+          name: ccon-${{ github.event.inputs.version }}-win-x64.exe
+          path: _build/Release/ccon.exe
       - name: Build installer
         run: |
           makensis /DVERSION="${{ github.event.inputs.version }}" /DARCH="x64" Installer/setup.nsi
@@ -49,11 +54,6 @@ jobs:
           upx -9 Installer/ccon-v${{ github.event.inputs.version }}-win-x64-setup.exe
           echo "Size after upx:"
           echo ((Get-Item Installer/ccon-v${{ github.event.inputs.version }}-win-x64-setup.exe).length)
-      - name: Upload binaries
-        uses: actions/upload-artifact@v2
-        with:
-          name: ccon-${{ github.event.inputs.version }}-win-x64.exe
-          path: _build/Release/ccon.exe
       - name: Upload installer
         uses: actions/upload-artifact@v2
         with:
@@ -89,6 +89,11 @@ jobs:
           upx -9 _build/Release/ccon.exe
           echo "Size after upx:"
           echo ((Get-Item _build/Release/ccon.exe).length)
+      - name: Upload binaries
+        uses: actions/upload-artifact@v2
+        with:
+          name: ccon-${{ github.event.inputs.version }}-win-x86.exe
+          path: _build/Release/ccon.exe
       - name: Build installer
         run: |
           makensis /DVERSION="${{ github.event.inputs.version }}" /DARCH="x86" Installer/setup.nsi
@@ -99,11 +104,6 @@ jobs:
           upx -9 Installer/ccon-v${{ github.event.inputs.version }}-win-x86-setup.exe
           echo "Size after upx:"
           echo ((Get-Item Installer/ccon-v${{ github.event.inputs.version }}-win-x86-setup.exe).length)
-      - name: Upload binaries
-        uses: actions/upload-artifact@v2
-        with:
-          name: ccon-${{ github.event.inputs.version }}-win-x86.exe
-          path: _build/Release/ccon.exe
       - name: Upload installer
         uses: actions/upload-artifact@v2
         with:

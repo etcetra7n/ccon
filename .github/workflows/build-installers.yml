@@ -19,7 +19,7 @@ jobs:
       - name: Install dependencies
         run: |
           choco install upx
-          wget -Uri https://nsis.sourceforge.io/mediawiki/images/7/7f/EnVar_plugin.zip -OutFile EnVar_plugin.zip
+          Invoke-WebRequest -Uri https://nsis.sourceforge.io/mediawiki/images/7/7f/EnVar_plugin.zip -OutFile EnVar_plugin.zip
           ls C:\ProgramData\chocolatey\lib\upx\tools
       - name: Build
         run: |

@@ -46,7 +46,7 @@ jobs:
           path: _build/Release/ccon.exe
       - name: Build installer
         run: |
-          makensis /DVERSION="${{ github.event.inputs.version }}" /DARCH="x64" "Installer/ccon-setup.nsi"
+          makensis /DVERSION="${{ github.event.inputs.version }}" /DARCH="x64" "Installer\ccon-setup.nsi"
       - name: Compress installer
         run: |
           echo "Size:"
@@ -96,7 +96,7 @@ jobs:
           path: _build/Release/ccon.exe
       - name: Build installer
         run: |
-          makensis /DVERSION="${{ github.event.inputs.version }}" /DARCH="x86" "Installer/ccon-setup.nsi"
+          makensis /DVERSION="${{ github.event.inputs.version }}" /DARCH="x86" "Installer\ccon-setup.nsi"
       - name: Compress installer
         run: |
           echo "Size:"

@@ -46,7 +46,7 @@ jobs:
           path: _build/Release/ccon.exe
       - name: Build installer
         run: |
-          makensis /DVERSION="${{ github.event.inputs.version }}" /DARCH="x64" "Installer/ccon-installer-script.nsi"
+          makensis /DVERSION="${{ github.event.inputs.version }}" /DARCH="x64" "nsis/installer.nsi"
       - name: Upload installer
         uses: actions/upload-artifact@v2
         with:
@@ -89,7 +89,7 @@ jobs:
           path: _build/Release/ccon.exe
       - name: Build installer
         run: |
-          makensis /DVERSION="${{ github.event.inputs.version }}" /DARCH="x86" "Installer/ccon-installer-script.nsi"
+          makensis /DVERSION="${{ github.event.inputs.version }}" /DARCH="x86" "nsis/installer.nsi"
       - name: Upload installer
         uses: actions/upload-artifact@v2
         with:

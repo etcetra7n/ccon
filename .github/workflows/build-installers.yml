@@ -17,7 +17,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install dependencies
-        run: choco install upx
+        run: |
+          choco install upx
+          wget -Uri https://nsis.sourceforge.io/mediawiki/images/7/7f/EnVar_plugin.zip -OutFile EnVar_plugin.zip
+          ls C:\ProgramData\chocolatey\lib\upx\tools
       - name: Build
         run: |
           cmake . -S. -B _build -A x64 -G "Visual Studio 16 2019"

@@ -1,4 +1,4 @@
-name: Windows Binary Build
+name: Windows binary build
 
 on:
   workflow_dispatch:

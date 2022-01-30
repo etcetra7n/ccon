@@ -52,7 +52,7 @@ jobs:
       - name: Upload binaries
         uses: actions/upload-artifact@v2
         with:
-          name: ccon-x64.exe
+          name: ccon-${{ github.event.inputs.version }}-win-x64.exe
           path: _build/Release/ccon.exe
       - name: Upload installer
         uses: actions/upload-artifact@v2
@@ -102,7 +102,7 @@ jobs:
       - name: Upload binary
         uses: actions/upload-artifact@v2
         with:
-          name: ccon-x86.exe
+          name: ccon-${{ github.event.inputs.version }}-win-x86.exe
           path: _build/Release/ccon.exe
       - name: Upload installer
         uses: actions/upload-artifact@v2

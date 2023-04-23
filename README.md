@@ -16,8 +16,8 @@ software on pretty much any system
   (this will copy the file content to your clipboard)
 
 **Note**: All the above features will only work if you install ccon using the
-setup wizard executable which is available in the release page (available for
-both 32-bit and 64-bit systems)
+setup wizard executable which can be downloaded from the
+[release page](https://github.com/etcetra7n/ccon/releases/latest)
 
 #### Command Line Usage
 

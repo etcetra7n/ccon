@@ -88,3 +88,5 @@ $RECYCLE.BIN/
 _build
 _vcbuild/
 _workspace/
+
+build/*/
